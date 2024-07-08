@@ -1,5 +1,6 @@
 package com.curso.orders_serive.config;
 
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -8,6 +9,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class WebClientConfig {
 
     @Bean
+    @LoadBalanced //Para activar el equilibrado de carga automatico al realizar solicitudes HTTP a servicvios registrados en un servidor eureka
     public WebClient.Builder webClient(){
         return WebClient.builder();
     }
